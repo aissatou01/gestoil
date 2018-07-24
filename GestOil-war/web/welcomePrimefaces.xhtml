@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+        <h:head>
+            <h:outputStylesheet library="css" name="style.css"/>
+            <link rel="stylesheet" type="text/css" href="css/bg.css" />
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="south" size="70" style="background: black !important;" closable="true" collapsible="true">
+                    <h3>All Rights Reserved To EPT</h3>
+
+                </p:layoutUnit>
+                <p:layoutUnit position="west" size="250" style="background: black !important;" header="Bienvenue" collapsible="true"> 
+                    <h:form id="form1">                   
+                        <p:growl id="msg" showDetail="true" />
+                        <fieldset>
+                            <legend><b>Ouverture/Fermeture</b></legend>
+                            <br/><br/>
+                            <p:commandButton styleClass="order-bouton" value="Nouveau Concours" action="Accueil_1"
+                                             actionListener="#{concoursManagedBean.AJouterConcours()}" />
+                            <br/><br/>
+                            <p:commandButton styleClass="order-bouton" value="Fin Concours" action="Candidat_1"
+                                             actionListener="#{concoursManagedBean.AJouterConcours1()}" />
+                        </fieldset>
+                        <p:accordionPanel multiple="true" >
+
+                        </p:accordionPanel>
+                    </h:form>   
+                </p:layoutUnit>
+                <p:layoutUnit position="center"  style="background: black !important;">
+                    <style type="text/css">
+                        .ui-widget{font-size:90% !important;}
+                    </style>
+                    <h:form>
+                        <p:growl id="messages" />
+                        <p:menubar>
+                            <p:menuitem value="Accueil" icon="ui-icon-home"  outcome="Candidat_1?faces-redirect=true"/>
+                            <p:submenu label="Paramétrage" icon="ui-icon-wrench">
+                                <p:menuitem value="Ajouter Ville" outcome="Ville?faces-redirect=true" />
+                                <p:menuitem value="Ajouter Centre" outcome="Centre?faces-redirect=true" />
+                                <p:menuitem value="Ajouter Etablissement" outcome="Etablissement?faces-redirect=true" />
+                                <p:menuitem value="Ajouter Superviseurs" outcome="Superviseur?faces-redirect=true"  />
+                                <p:menuitem value="Ajouter Chargés Concours" outcome="Charge?faces-redirect=true" />
+                            </p:submenu>
+                            <p:submenu label="Gestion notes"  icon="ui-icon-note">
+                                <p:submenu label="Notes" icon="ui-icon-note" >
+                                    <p:submenu label="Notes Lycée" icon="ui-icon-note" >
+                                        <p:menuitem value="Notes Seconde" outcome="NotesSeconde?faces-redirect=true"/>
+                                        <p:menuitem value="Notes Première" outcome="NotesPremiere?faces-redirect=true"/>
+                                        <p:menuitem value="Notes Terminale" outcome="NotesTerminale?faces-redirect=true"/>
+                                    </p:submenu>
+                                    <p:menuitem value="Notes Concours"  outcome="NoteConcours?faces-redirect=true"/>
+                                    <p:menuitem value="Note Baccalaureat"  outcome="MoyenneBac?faces-redirect=true" />
+                                </p:submenu>
+                                <p:submenu label="Resultats" icon="ui-icon-note">
+                                    <p:menuitem value="Résultats Lycée"  outcome="MoyenneLyceeCandidats?faces-redirect=true" />
+                                    <p:menuitem value="Reésultats Concours"  outcome="ResultatsConcours?faces-redirect=true"/>
+                                    <p:menuitem value="Résultats Final"  outcome="ResultatFinal?faces-redirect=true"/>
+                                </p:submenu>
+                            </p:submenu>
+                            <p:submenu label="Statistiques" icon="ui-icon-refresh" >
+                                <p:submenu label="Candidats" icon="ui-icon-refresh" >
+                                <p:menuitem value="Candidat par Centre"    outcome="Candidat_Par_Centre?faces-redirect=true"/>
+                                <p:menuitem value="Candidat par Option"   outcome="CandidatOption?faces-redirect=true" />
+                                <p:menuitem value="Candidat par Série"   outcome="CandidatSerie?faces-redirect=true" />
+                                <p:menuitem value="Candidat par Etablissement"    outcome="CandidatEtablissement?faces-redirect=true"/>
+                                <p:menuitem value="Candidat par Nationalité"   outcome="CandidatNationnalite?faces-redirect=true" />
+                                <p:menuitem value="Candidat par Région"   outcome="CandidatParRegion?faces-redirect=true" />
+                                </p:submenu>
+                                <p:submenu label="Région" icon="ui-icon-refresh" >
+                                <p:menuitem value="Centre par Région"   outcome="CentreRegion?faces-redirect=true" />
+                                <p:menuitem value="Etablissement par Région"   outcome="EtablissementRegion?faces-redirect=true" />
+                                </p:submenu>
+                            </p:submenu>
+                            <p:menuitem value="Finances" icon="ui-icon-script"  outcome="Finances?faces-redirect=true"/>
+                            <p:submenu label="Listes" icon="ui-icon-bookmark">
+                                <p:menuitem value="Superviseurs"  icon="ui-icon-person" outcome="Liste_Superviseurs?faces-redirect=true"/>
+                                <p:menuitem value="Etablissements"  icon="ui-icon-contact" outcome="Liste_Ecole?faces-redirect=true"/>
+                                <p:menuitem value="Centres"  icon="ui-icon-home" outcome="Liste_Centre?faces-redirect=true"/>
+                                <p:menuitem value="Candidats" icon="ui-icon-person" outcome="ListeCandidatspdf?faces-redirect=true"/>
+                                <p:menuitem value="Centres"  icon="ui-icon-home" outcome="Liste_Centre?faces-redirect=true"/>
+                                <p:menuitem value="Villes"  icon="ui-icon-home" outcome="ListeVille?faces-redirect=true"/>
+                                <p:menuitem value="Chargés Concours" icon="ui-icon-person" outcome="ListeCharge?faces-redirect=true"/>
+                            </p:submenu>
+                            <p:menuitem value="Archives" icon="ui-icon-help"  outcome="Archives?faces-redirect=true"/>
+                            <f:facet name="options">
+                                <p:commandButton type="button" value="DECONNECTION" icon="ui-icon-power" />
+                            </f:facet>
+                        </p:menubar>
+                    </h:form>
+                    &nbsp;&nbsp;&nbsp;&nbsp;  
+                    <f:view>
+                        <h:form id="form2">
+                           
+                                <center>
+                                    <p:outputPanel id="tabl1" deferred="true" deferredMode="visible">
+
+                                            <p:panelGrid columns="2">
+
+                                                <h:outputLabel value="Nom Centre:"/>
+                                                <p:inputText id="nomCentre" value="#{centreManagedBean.nomCentre}" title="NomCentre" />
+                                                <h:outputLabel value="Adresse Centre:" />
+                                                <p:inputText id="adresseCentre" value="#{centreManagedBean.adresseCentre}" title="AdresseCentre" />
+                                                <h:outputLabel value="Frais Déplacement:" />
+                                                <p:inputText id="ad" value="#{centreManagedBean.frais}" title="Adresse" />
+                                                 <h:outputLabel value="Ville:" />
+                                                 <p:selectOneMenu value="#{centreManagedBean.villeidVille.idVille}"> 
+                                                <f:selectItem itemLabel="Select One"  noSelectionOption="true" />
+                                                <f:selectItems value="#{villeManagedBean.villes}"  
+                                                               var="item"   
+                                                               itemLabel="#{item.nomVille}" itemValue="#{item.idVille}"/>
+                                            </p:selectOneMenu>  
+                                             <p:commandButton styleClass="order-bouton" value="Enregistrer" update=":form3:tabl"
+                                                              actionListener="#{centreManagedBean.AJouterCentre()}" type="submit" />
+                                            </p:panelGrid>
+                                     </p:outputPanel>
+                                </center>
+                           
+                        </h:form>
+   &nbsp;&nbsp;&nbsp;&nbsp; 
+                        <h:form id="form3" styleClass="list_form">
+                            <p:outputPanel id="tabl" deferred="true" deferredMode="visible">
+                                <p:dataTable value="#{centreManagedBean.listCentres}" var="item" 
+                                             rows="10" paginator="true"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             rowsPerPageTemplate="5,10,15">
+                                    <f:facet name="header">
+                                        Liste des Centres d'Examen
+                                    </f:facet>
+
+                                    <p:column headerText="Numero">
+
+                                        <h:outputText value="#{item.idCentreexam}"/>
+                                    </p:column>
+                                    <p:column headerText="Nom Centre">
+                                        <h:outputText value="#{item.nomCentre}"/>
+                                    </p:column>
+                                    <p:column headerText="Adresse">
+
+                                        <h:outputText value="#{item.adresseCentre}"/>
+                                    </p:column>  
+                                    <p:column headerText="Frais Déplacement">
+
+                                        <h:outputText value="#{item.fraisDeplacement}"/>
+                                    </p:column> 
+                                    <p:column headerText="Region">
+
+                                        <h:outputText value="#{item.villeidVille.nomVille}"/>
+                                    </p:column>
+                                    <p:column headerText="Les Opérations" width="200">
+                                        <p:commandButton value="Modifier" id="withIcon"  actionListener="#{centreManagedBean.edit(item)}" icon="ui-icon-pencil" action="Centre_1" />
+                                        <p:commandButton value="Supprimer" update=":form3:tabl" actionListener="#{centreManagedBean.SupprimerCentre(item)}"  onclick="return confirm('Etes vous sur de vouloir Supprimer?')" icon="ui-icon-trash" action="Centre"/>  
+                                    </p:column>
+                                </p:dataTable>
+                                <br/>
+  </p:outputPanel>
+ </h:form>
+                    </f:view>  
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
+
+
